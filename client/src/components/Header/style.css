@@ -1,0 +1,35 @@
+.navigation{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.wide{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: all 1s ease;
+}
+.hamburger{
+    position: fixed;
+    left: 90%;
+    transform: translateX(500%);
+    transition: all 1s ease;
+}
+
+@media (max-width: 1080px) {
+    .wide{
+        transform: translateX(500%);
+        transition: all 1s ease;
+    }
+    .hamburger{
+        transform: translateX(0%);
+        transition: all 1s ease;
+    }
+}
+
+@media (maxwidth: 600px) {
+    .hamburger{
+        transform: translateX(10%);
+        transition: all 1s ease;
+    }
+}

@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './components/Home'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-function App() {
+const theme = createTheme({
+  typography:{
+    fontFamily: '"Inder", system-ui', 
+    h1: { fontSize: '3.5em', fontWeight: 'bold' },
+    h2: { fontSize: '3em', fontWeight: 'bold' },
+    h3: { fontSize: '2.5em', fontWeight: 'bold' },
+    h4: { fontSize: '2em', fontWeight: 'bold' },
+    h5: { fontSize: '1.5em', fontWeight: 'bold' },
+    h6: { fontSize: '1em', fontWeight: 'bold' }
+  }
+})
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
