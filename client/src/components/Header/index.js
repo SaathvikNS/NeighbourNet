@@ -4,8 +4,11 @@ import { AppBar, Toolbar, Typography, Button, Tooltip, Fade, Menu, MenuItem, Ico
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
+import LoginRegisterDialog from '../utils/Logindialogue';
 
 const Header = (props) => {
+    const [open, setOpen] = useState(false);
     const [scrollingDown, setScrollingDown] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -32,6 +35,14 @@ const Header = (props) => {
             boxShadow: 'none'
         }
     }
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     
     useEffect(() => {
         const handleScroll = () => {
@@ -66,9 +77,10 @@ const Header = (props) => {
                 </Toolbar>
                 <div className='navigation'>
                     <div className='wide'>
-                        <Button color='#fff' sx={{ fontSize: '1.1rem' }}>About</Button>
+                        <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/"} >Home</Button>
+                        <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/about"} >About</Button>
                         <Button color='#fff' sx={{ fontSize: '1.1rem' }}>Contact Us</Button>
-                        <Button color='#fff' sx={{ fontSize: '1.1rem' }}>Login/Register</Button>
+                        <Button color='#fff' sx={{ fontSize: '1.1rem' }} onClick={handleClickOpen} >Login/Register</Button>
                         <Tooltip title="This feature will be available soon" arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                             <Button color='#fff' sx={{ fontSize: '1rem' }} >
                                 <DarkModeSharpIcon fontSize='medium' className='theme' />
@@ -94,7 +106,7 @@ const Header = (props) => {
                                 },
                             }}
                         >
-                            <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose}>About</MenuItem>
+                            <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose} component={Link} to={"/about"}>About</MenuItem>
                             <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose}>Contact Us</MenuItem>
                             <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose}>Login/Register</MenuItem>
                             <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose}>Switch Theme</MenuItem>
@@ -102,6 +114,7 @@ const Header = (props) => {
                     </div>
                 </div>
             </AppBar>
+            <LoginRegisterDialog open={open} handleClose={handleClose} />
         </div>
     );
 };

@@ -10,6 +10,7 @@ import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import FestivalIcon from '@mui/icons-material/Festival';
 import PeopleIcon from '@mui/icons-material/People';
 import { Testi } from '../../Global/testi';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const {dark} = useContext(MyContext);
@@ -170,7 +171,7 @@ const Home = () => {
                     <Divider orientation='vertical' variant='middle' sx={{margin: '0 2rem', backgroundColor: '#ECDFCC' ,height: '10rem'}} />
                     <Box sx={{width: '30vw', display: 'flex', flexDirection: 'column'}}>
                         <Button variant='contained' sx={{width: '10rem', margin: '1.5rem 10rem', backgroundColor: '#697565'}}>Signup</Button>
-                        <Button variant='contained' sx={{width: '10rem', margin: '1.5rem 10rem', backgroundColor: '#697565'}}>Learn More</Button>
+                        <Button variant='contained' sx={{width: '10rem', margin: '1.5rem 10rem', backgroundColor: '#697565'}} component={Link} to={"/about"}>Learn More</Button>
                     </Box>
                 </Box>
                 <Footer />

@@ -1,0 +1,18 @@
+.customAppBar {
+    background-color: #545454;
+    box-shadow: none;
+}
+
+.customTabs {
+    background-color: #3C3D37;
+}
+
+.customTab {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.MuiTab-root.Mui-selected {
+    color: #fff;
+    background-color: #697565;
+}
