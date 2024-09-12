@@ -41,7 +41,7 @@ const Login = () => {
         <Box 
             component="form" 
             onSubmit={handleLogin} 
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%', maxWidth: 400, margin: 'auto', padding: 2 }}>
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%', maxWidth: 400, margin: 'auto', padding: 2, boxSizing: 'border-box'}}>
             <TextField label="Email" variant="outlined" type="email" color='#697565' value={email} onChange={(e) => setEmail(e.target.value)} fullWidth size='small' required/>
             <FormControl variant="outlined" fullWidth size='small'>
                 <InputLabel htmlFor="password" sx={{color: 'text.secondary','&.Mui-focused': {color: '#697565'}}}>Password *</InputLabel>

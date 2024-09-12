@@ -11,9 +11,11 @@ import FestivalIcon from '@mui/icons-material/Festival';
 import PeopleIcon from '@mui/icons-material/People';
 import { Testi } from '../../Global/testi';
 import { Link } from 'react-router-dom';
+import LoginRegisterDialog from '../utils/Logindialogue';
 
 const Home = () => {
     const {dark} = useContext(MyContext);
+    const [open, setOpen] = useState(false);
 
     const features = {
         "Help Requests": ["Users can post and respond to help requests within the neighborhood.", ContactSupportIcon],
@@ -34,6 +36,13 @@ const Home = () => {
                 y: e.clientY - rect.top
             });
         }
+    };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
     };
 
     console.log(Testi);
@@ -170,13 +179,14 @@ const Home = () => {
                     <Typography variant='h4' sx={{color: '#ECDFCC', width: '30vw'}}>Ready to join the community?</Typography>
                     <Divider orientation='vertical' variant='middle' sx={{margin: '0 2rem', backgroundColor: '#ECDFCC' ,height: '10rem'}} />
                     <Box sx={{width: '30vw', display: 'flex', flexDirection: 'column'}}>
-                        <Button variant='contained' sx={{width: '10rem', margin: '1.5rem 10rem', backgroundColor: '#697565'}}>Signup</Button>
+                        <Button variant='contained' sx={{width: '10rem', margin: '1.5rem 10rem', backgroundColor: '#697565'}} onClick={handleClickOpen} >Signup</Button>
                         <Button variant='contained' sx={{width: '10rem', margin: '1.5rem 10rem', backgroundColor: '#697565'}} component={Link} to={"/about"}>Learn More</Button>
                     </Box>
                 </Box>
                 <Footer />
             </section>
         </div>
+        <LoginRegisterDialog open={open} handleClose={handleClose} />
     </div>
   )
 }
