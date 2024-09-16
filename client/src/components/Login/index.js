@@ -4,7 +4,7 @@ import { IconButton, InputAdornment, FormControl, InputLabel, OutlinedInput } fr
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import StepperDialog from '../utils/stepper';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import RegisterStepper from '../utils/Registerstepper'
 import axios from 'axios'
 import { api } from '../../Global/localhost'

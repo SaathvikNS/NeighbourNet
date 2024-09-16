@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Button, Box, Typography, Stepper, Step, StepLabel, TextField, Snackbar, Alert, Backdrop, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import { api } from '../../Global/localhost'
@@ -27,6 +27,7 @@ const StepperDialog = ({ open, onClose, email }) => {
         setLoading(true);
         try{
             const response = await axios.post(`${api}/users/verify-otp`, {email, otp});
+            console.log(response.data);  
             console.log(activeStep)
             setActiveStep(activeStep+1)            
         } catch(error){

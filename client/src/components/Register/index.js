@@ -44,7 +44,7 @@ const RegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(formData.password != formData.confirmPassword){
+        if(formData.password !== formData.confirmPassword){
             setSnackbarMessage('Passswords do not match');
             setSnackbarSeverity('error');
             setSnackbarOpen(true);
@@ -59,6 +59,7 @@ const RegistrationForm = () => {
         setLoading(true);
         try{
             const response = await axios.post(`${api}/users/register`, formData);
+            console.log(response.data);
             setSnackbarMessage('Otp Sent to the registered mail');
             setSnackbarSeverity('success');
             setOpenStepper(true);

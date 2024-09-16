@@ -1,5 +1,4 @@
-// StepperDialog.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Button, Box, Typography, Stepper, Step, StepLabel, TextField, Snackbar, Alert, Backdrop, CircularProgress } from '@mui/material';
 import { api } from './../../Global/localhost';
 import axios from 'axios';
@@ -25,6 +24,7 @@ const StepperDialog = ({ open, onClose }) => {
         setloading(true);
         try {
             const response  = await axios.post(`${api}/users/forgot-password-send-otp`, {email});
+            console.log(response.data);
             setSnackbarMessage('Otp sent to the registered mail');
             setSnackbarSeverity('success');
             setSnackbarOpen(true);
@@ -40,6 +40,7 @@ const StepperDialog = ({ open, onClose }) => {
         setloading(true);
         try{
             const response = await axios.post(`${api}/users/forgot-password-verify-otp`, {email, otp});
+            console.log(response.data);
             setSnackbarMessage('Otp verified');
             setSnackbarSeverity('success');
             setSnackbarOpen(true);
@@ -51,9 +52,9 @@ const StepperDialog = ({ open, onClose }) => {
         }
         setloading(false);
     }
-
+    
     const handlePassword = async () => {
-        if(password != confirmPassword){
+        if(password !== confirmPassword){
             setSnackbarMessage('Passswords do not match');
             setSnackbarSeverity('error');
             setSnackbarOpen(true);
@@ -62,6 +63,7 @@ const StepperDialog = ({ open, onClose }) => {
         setloading(true);
         try{
             const response = await axios.post(`${api}/users/forgot-password-change-password`, {email, password});
+            console.log(response.data);
             setSnackbarMessage('Password set successfully');
             setSnackbarSeverity('success');
             setSnackbarOpen(true);
