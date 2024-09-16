@@ -18,10 +18,10 @@ const Home = () => {
     const [open, setOpen] = useState(false);
 
     const features = {
-        "Help Requests": ["Users can post and respond to help requests within the neighborhood.", ContactSupportIcon],
+        "Help Requests": ["Users can post and respond to help requests within the neighbourhood.", ContactSupportIcon],
         "Resource Sharing": ["Enables community members to borrow and lend items like books, tools, and more.", VolunteerActivismIcon],
         "Community Events": ["Allows users to discover and participate in local events and gatherings.", FestivalIcon],
-        "Volunteer Coordination": ["A platform to organize and find volunteers for neighborhood activities.", PeopleIcon]
+        "Volunteer Coordination": ["A platform to organize and find volunteers for neighbourhood activities.", PeopleIcon]
     }
 
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -44,8 +44,6 @@ const Home = () => {
     const handleClose = () => {
         setOpen(false);
     };
-
-    console.log(Testi);
 
   return (
     <div>
@@ -79,7 +77,7 @@ const Home = () => {
                 <Grid container justifyContent="center" columnGap={20} rowGap={{xs: 20, sm: 10, md: 15, lg: 15}} style={{ height: 'calc(85vh - 100px)'}}>
                     {Object.entries(features).map(([title, [description, IconComponent]], index)=>{
                         return(
-                            <Grid item size={{ xs: 12, lg: 4.5 }} sx={{height: '12vw'}}>
+                            <Grid key={index} size={{ xs: 12, lg: 4.5 }} sx={{height: '12vw'}}>
                                 <Card sx={{position: 'relative', overflow: 'hidden',minWidth: '520px', minHeight: '160px', height: '100%', width: '100%', borderRadius: '30px', backgroundColor: '#3C3D37', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onMouseMove={(e) => handleMouseMove(e, index)} onMouseEnter={() => setHoveredCard(index)} onMouseLeave={() => setHoveredCard(null)} ref={(el) => cardRefs.current[index] = el} >
                                     <CardContent sx={{display: 'flex', gap: '2rem', width:'90%', position: 'relative'}}>
                                         <Box sx={{height: '100%'}}>
@@ -120,27 +118,29 @@ const Home = () => {
                     <Container className='aboutleft'>
                         <Typography sx={{fontSize: '2rem', color: '#ECDFCC', marginBottom: '2rem', textAlign: 'justify'}}>Discover Neighbourhood</Typography>
                         <Typography sx={{fontSize: '1.2rem', color: 'white', textAlign: 'justify', marginBottom: '5rem'}}>
-                        At NeighborNet, our mission is to create a more connected and supportive community. We provide a platform where neighbors can easily connect, share resources, and participate in local events, all with the aim of enhancing the quality of life in your neighborhood.
+                        At NeighbourNet, our mission is to create a more connected and supportive community. We provide a platform where neighbours can easily connect, share resources, and participate in local events, all with the aim of enhancing the quality of life in your neighbourhood.
                         </Typography>
-                        <Typography sx={{fontSize: '2rem', color: '#ECDFCC', marginBottom: '2rem', textAlign: 'justify'}}>Why NeighborNet?</Typography>
+                        <Typography sx={{fontSize: '2rem', color: '#ECDFCC', marginBottom: '2rem', textAlign: 'justify'}}>Why NeighbourNet?</Typography>
                         <Typography sx={{fontSize: '1.2rem', color: 'white', textAlign: 'justify', marginBottom: '3rem'}}>
-                        We believe that strong communities are built on connection and collaboration. NeighborNet empowers you to make a positive impact right where you live, fostering a sense of belonging and shared purpose.
+                        We believe that strong communities are built on connection and collaboration. NeighbourNet empowers you to make a positive impact right where you live, fostering a sense of belonging and shared purpose.
                         </Typography>
                     </Container>
                     <div className='divider'/>
                     <Container>
                         <Typography sx={{fontSize: '2rem', color: '#ECDFCC', marginBottom: '2rem', textAlign: 'justify'}}>What We Offer ?</Typography>                        
-                        <Typography sx={{fontSize: '1.2rem', color: 'white', textAlign: 'justify', marginBottom: '3rem'}}>
-                            <ul>
-                                <li>Help Requests: Quickly post or respond to help requests, ensuring that support is always close at hand.</li>
-                                <li>Resource Sharing: Borrow and lend items such as books, tools, and more, fostering a spirit of generosity and cooperation.</li>
-                                <li>Community Events: Find and join local events to stay engaged and involved in your community.</li>
-                                <li>Volunteer Coordination: Easily organize and find volunteers for neighborhood activities and projects.</li>
-                                <li>Neighborhood Skill Exchange:Exchange skills like tutoring, tech support, or handyman services with neighbors. Offer your expertise or find help nearby</li>
-                                <li>Local Business Support: Promote and support local businesses by finding nearby services, restaurants, and shops. Encourage a thriving neighborhood economy by keeping it local.</li>
-                                <li>Safety Alerts & Updates: Stay informed about safety updates and community alerts to ensure a safe and well-protected neighborhood.</li>
-                            </ul>
-                        </Typography>
+                        <Box sx={{fontSize: '1.2rem', color: 'white', textAlign: 'justify', marginBottom: '3rem'}}>
+                            <div>
+                                <ul>
+                                    <li>Help Requests: Quickly post or respond to help requests, ensuring that support is always close at hand.</li>
+                                    <li>Resource Sharing: Borrow and lend items such as books, tools, and more, fostering a spirit of generosity and cooperation.</li>
+                                    <li>Community Events: Find and join local events to stay engaged and involved in your community.</li>
+                                    <li>Volunteer Coordination: Easily organize and find volunteers for neighbourhood activities and projects.</li>
+                                    <li>Neighbourhood Skill Exchange:Exchange skills like tutoring, tech support, or handyman services with neighbours. Offer your expertise or find help nearby</li>
+                                    <li>Local Business Support: Promote and support local businesses by finding nearby services, restaurants, and shops. Encourage a thriving neighbourhood economy by keeping it local.</li>
+                                    <li>Safety Alerts & Updates: Stay informed about safety updates and community alerts to ensure a safe and well-protected neighbourhood.</li>
+                                </ul>
+                            </div>
+                        </Box>
                     </Container>
                 </Box>
             </section>
@@ -152,7 +152,7 @@ const Home = () => {
                 <Grid container justifyContent={'space-evenly'} gap={1}>
                     {Testi.map((test, index)=>{
                         return(
-                            <Grid size={5}>
+                            <Grid size={5} key={index}>
                                 <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '2rem', width: '100%', padding: '2rem', backgroundColor: '#3C3D37', borderRadius: '30px'}}>
                                     <Box sx={{display: 'flex', gap: '1rem'}}>
                                         <Box>
@@ -173,7 +173,7 @@ const Home = () => {
                     <Typography variant="h3" sx={{color:'#ECDFCC'}}>Join Us Today</Typography>
                 </Box>
                 <Typography sx={{color: 'white', fontSize: '1.5vw'}}>
-                    Become a part of the NeighborNet community and experience the benefits of a more connected neighborhood. Explore our platform and see how you can contribute to a vibrant and supportive community.
+                    Become a part of the NeighbourNet community and experience the benefits of a more connected neighbourhood. Explore our platform and see how you can contribute to a vibrant and supportive community.
                 </Typography>
                 <Box sx={{flex: '1', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <Typography variant='h4' sx={{color: '#ECDFCC', width: '30vw'}}>Ready to join the community?</Typography>

@@ -71,7 +71,7 @@ const Header = (props) => {
         <div>
             <AppBar className='appbar' sx={appbarstyle}>
                 <Toolbar>
-                    <Typography sx={{ fontFamily: 'Inder', fontSize: '1.5rem', '@media (max-width:600px)':{display:'none'}}}>
+                    <Typography sx={{ fontFamily: 'Inder', fontSize: '1.5rem', '@media (max-width:600px)':{display:'none'}, userSelect: 'none'}}>
                         NeighbourNet.
                     </Typography>
                 </Toolbar>

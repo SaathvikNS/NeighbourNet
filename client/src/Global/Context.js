@@ -4,9 +4,10 @@ const MyContext = React.createContext();
 
 const ContextProvider = ({children}) => {
     const [dark, setdark] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     return(
-        <MyContext.Provider value={{dark, setdark}}>
+        <MyContext.Provider value={{dark, setdark, loggedIn, setLoggedIn}}>
             {children}
         </MyContext.Provider>
     )

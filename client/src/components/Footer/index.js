@@ -10,10 +10,11 @@ const Footer = () => {
     <footer style={{width: '100%'}}>
       <Box sx={{ bgcolor: '#1E201E', color: 'white', py: 3, textAlign: 'center' }}>
         <Container>
-          <Typography variant="h6">NeighborNet</Typography>
+          <Typography variant="h6">NeighbourNet</Typography>
 
           <Box>
             <Tooltip title="Not yet linked" disableInteractive arrow followCursor>
+              <div>
                 <IconButton aria-label="facebook" color="inherit">
                 <FacebookIcon />
                 </IconButton>
@@ -26,6 +27,7 @@ const Footer = () => {
                 <IconButton aria-label="linkedin" color="inherit">
                 <LinkedInIcon />
                 </IconButton>
+              </div>
             </Tooltip>
           </Box>
 
@@ -33,7 +35,7 @@ const Footer = () => {
             <Link href="/about" color="inherit" underline="hover" sx={{ mx: 2 }}>
               About Us
             </Link>
-            <Link href="/contact" color="inherit" underline="hover" sx={{ mx: 2 }}>
+            <Link href="" color="inherit" underline="hover" sx={{ mx: 2 }}>
               Contact
             </Link>
             <Tooltip title="No terms for now">
@@ -50,7 +52,7 @@ const Footer = () => {
 
           <Box sx={{ mt: 2 }}>
             <Typography variant="body2" color="inherit">
-              &copy; {new Date().getFullYear()} NeighborNet. All Rights Reserved.
+              &copy; {new Date().getFullYear()} NeighbourNet. All Rights Reserved.
             </Typography>
           </Box>
         </Container>

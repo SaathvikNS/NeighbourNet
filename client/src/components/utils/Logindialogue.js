@@ -1,5 +1,3 @@
-// src/utility/LoginRegisterDialog.js
-
 import React, { useState } from 'react';
 import { Dialog, AppBar, Tabs, Tab, Box, DialogContent } from '@mui/material';
 import Login from '../Login'; 
