@@ -51,12 +51,13 @@ const Login = () => {
             } else{
                 console.log("Logged in");
                 setLoggedIn(true);
-                navigate('/user');
+                navigate(`/user/${response.data.token}`);
             }
         } catch (error){
             setSnackbarMessage(error.response?.data?.message || "Something went wrong")
             setSnackbarSeverity('error')
             setSnackbarOpen(true)
+            setLoading(false);
             return;
         }
         setLoading(false);

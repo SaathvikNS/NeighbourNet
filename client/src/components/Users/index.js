@@ -4,10 +4,10 @@ import Notloggedin from './Notloggedin';
 import Loggedin from './Loggedin';
 
 const Users = () => {
-  const { loggedIn} = useContext(MyContext);
+  const { loggedIn } = useContext(MyContext);
   return (
     <div style={{height: '100vh', width: '100vw', display: 'flex'}}>
-      {!loggedIn ? (
+      {loggedIn || true ? (
         <Loggedin />
       ) : (
         <Notloggedin />

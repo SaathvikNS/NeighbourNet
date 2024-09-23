@@ -10,7 +10,7 @@ const Notloggedin = () => {
         404: USER NOT FOUND!!
         </Typography>
         <Typography variant='h5'>
-        Please make sure you lagin before accessing the user page
+        Please make sure you login before accessing the user page
         </Typography>
     </Box>
   )

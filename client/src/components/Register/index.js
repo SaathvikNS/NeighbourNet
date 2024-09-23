@@ -4,6 +4,7 @@ import { cities } from './../../Global/cities';
 import axios from 'axios';
 import { api } from './../../Global/localhost';
 import Registerstepper from '../utils/Registerstepper';
+import './style.css'
 
 const RegistrationForm = () => {
     const [loading, setLoading] = useState(false);
@@ -164,10 +165,11 @@ const RegistrationForm = () => {
                         value={formData.gender}
                         label="Gender"
                         onChange={handleChange}
+                        className='genderSelect'
                     >
-                        <MenuItem value={"Male"}>Male</MenuItem>
-                        <MenuItem value={"Female"}>Female</MenuItem>
-                        <MenuItem value={"Other"}>Others</MenuItem>
+                        <MenuItem value={"Male"} className='genderOptions'>Male</MenuItem>
+                        <MenuItem value={"Female"} className='genderOptions'>Female</MenuItem>
+                        <MenuItem value={"Other"} className='genderOptions'>Others</MenuItem>
                     </Select>
                 </FormControl>
                 <TextField
