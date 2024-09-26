@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const EventSchema = new mongoose.Schema({
     title:{
@@ -9,7 +9,7 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    userId: {
+    userid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
@@ -19,6 +19,10 @@ const EventSchema = new mongoose.Schema({
         required: true,
     },
     location: {
+        type: String,
+        required: true
+    },
+    contact: {
         type: String,
         required: true
     },

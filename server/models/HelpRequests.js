@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const HelpRequestSchema = new mongoose.Schema({
     title: {
@@ -7,11 +7,20 @@ const HelpRequestSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        minlength: 20,
         required: true,
     },
     userid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: true,
+    },
+    location:{
+        type: String,
+        required: true,
+    },
+    contact: {
+        type: String,
         required: true,
     },
     status: {
@@ -20,12 +29,9 @@ const HelpRequestSchema = new mongoose.Schema({
         default: "open",
     },
     responders: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }],
-    responses: [{
-        helperId: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
-        status: { type: String, enum: ['accepted', 'completed'], default: 'accepted'}
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "User",
+        default: []
     }],
     createdAt: {
         type: Date,

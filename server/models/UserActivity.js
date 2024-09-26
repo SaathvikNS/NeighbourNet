@@ -1,14 +1,18 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const UserActivitySchema = new mongoose.Schema({
-    userId: {
+    userid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-    actionType: {
+    activity: {
         type: String,
-        enum: ['HelpRequest', 'Resource', 'Event', 'Response'],
+        enum: ['HelpRequest', 'RequestedResource', 'ScheduledEvent', 'HelpResponse', 'SharedResource', 'EnrolledToEvent'],
+        required: true
+    },
+    title: {
+        type: String,
         required: true
     },
     createdAt: {

@@ -23,7 +23,7 @@ const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100
 });
-app.use(limiter);
+// app.use(limiter);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
@@ -35,6 +35,10 @@ mongoose.connect(process.env.MONGO_URI)
     });
 
 app.use('/api/users', require('./routes/users'));
+app.use('/api/actions', require('./routes/actions'))
+app.use('/api/actionresponse', require('./routes/actionresponse'))
+app.use('/api/todos', require('./routes/todos'))
+app.use('/api/overview', require('./routes/overview'))
 
 app.use((err, req, res, next) => {
     console.error(err.message);

@@ -79,7 +79,7 @@ const Header = (props) => {
                     <div className='wide'>
                         <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/"} >Home</Button>
                         <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/about"} >About</Button>
-                        <Button color='#fff' sx={{ fontSize: '1.1rem' }}>Contact Us</Button>
+                        <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/contact"}>Contact Us</Button>
                         <Button color='#fff' sx={{ fontSize: '1.1rem' }} onClick={handleClickOpen} >Login/Register</Button>
                         <Tooltip title="This feature will be available soon" arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                             <Button color='#fff' sx={{ fontSize: '1rem' }} >
@@ -107,7 +107,7 @@ const Header = (props) => {
                             }}
                         >
                             <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose} component={Link} to={"/about"}>About</MenuItem>
-                            <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose}>Contact Us</MenuItem>
+                            <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose} component={Link} to={"/contact"}>Contact Us</MenuItem>
                             <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose}>Login/Register</MenuItem>
                             <MenuItem sx={{ padding: '10px 20px' }} onClick={handleMenuClose}>Switch Theme</MenuItem>
                         </Menu>

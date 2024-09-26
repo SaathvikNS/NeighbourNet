@@ -1,0 +1,47 @@
+section{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+}
+.a{
+    background-color: #1E201E;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.bottom{
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(#1E201E00, #1E201E);
+    height: 20vh;
+    width: 100%;
+    z-index: 10;
+}
+
+.action{
+    animation: prompt 1s ease 2s infinite both;
+}
+
+.action:hover{
+    background: none;
+}
+
+@keyframes prompt {
+    0%{
+        transform: translateY(0%);
+    }
+    20%{
+        transform: translateY(10%);
+    }
+    40%{
+        transform: translateY(0%);
+    }
+    60%{
+        transform: translateY(5%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}

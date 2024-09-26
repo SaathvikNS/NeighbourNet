@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 
-const NotificationSchema = new mongoose.Schema({
-    userId: {
+const ToDoSchema = new mongoose.Schema({
+    userid:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    name: {
+    title:{
         type: String,
         required: true
     },
-    type:{
+    status:{
         type: String,
-        enum: ['HelpRequest', 'Resource', 'Event'],
-        required: true
+        enum: ['pending', 'completed'],
+        default: 'pending'
     },
-    createdAt: {
+    createdAt:{
         type: Date,
         default: Date.now
     }
 })
 
-module.exports = mongoose.model('Notification', NotificationSchema);
+module.exports = mongoose.model('ToDo', ToDoSchema);

@@ -128,12 +128,14 @@ exports.loginUser = async (req, res) => {
         const matched = await user.comparePassword(password);
         if(!matched) return res.status(400).json({message: 'Invalid password'});
 
-        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
-        user.token = token;
+        if(!user.token){
+            const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
+            user.token = token;
+    
+            await user.save();
+        }
 
-        await user.save();
-
-        return res.status(200).json({ success: true, token });
+        return res.status(200).json({ success: true, token: user.token });
     } catch (error){
         console.log(error.message);
         res.status(500).json({message: 'Server error', error: error.message})
@@ -224,6 +226,37 @@ exports.forgotPasswordChangePassword = async (req, res) => {
 
         res.status(200).send({success: true})
         } catch(error){
+        console.log(error.message);
+        res.status(500).json({message: 'Server error', error: error.message});
+    }
+}
+
+exports.getInfo = async (req, res) => {
+    try{
+        const token = req.params.token;
+
+        if(!token) return res.status(400).json({message: 'Token not found'});
+        const user = await User.findOne({token})
+        if(!user) return res.status(400).json({message: 'User not found!'});
+
+        const formatteddate = new Date(user.dateOfBirth).toLocaleDateString('en-GB')
+        
+        res.status(200).json({userid: user._id, name: user.name, email: user.email, number: user.phone, dob: formatteddate, gender: user.gender, city: user.city });
+    } catch(error){
+        console.log(error.message);
+        res.status(500).json({message: 'Server error', error: error.message});
+    }
+}
+
+exports.getOneUser = async(req, res) => {
+    try{
+        const userId = req.params.id;
+        console.log(userId)
+        const user = await User.findById(userId);
+        if(!user) return res.status(400).json({message: 'User not found!'});
+
+        res.status(200).json({name: user.name})
+    } catch(error){
         console.log(error.message);
         res.status(500).json({message: 'Server error', error: error.message});
     }

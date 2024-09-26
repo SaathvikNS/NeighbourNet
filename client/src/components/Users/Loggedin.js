@@ -19,13 +19,15 @@ import Dashboard from './InnerPages/Dashboard';
 import Helprequests from './InnerPages/HelpRequests';
 import Resourcesharing from './InnerPages/ResourceSharing';
 import Events from './InnerPages/Events';
+import { useNavigate } from 'react-router-dom';
 
 const Loggedin = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [anchor, setAnchor] = useState();
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const {dark, setdark} = useContext(MyContext)
+    const {dark, setdark, setLoggedIn} = useContext(MyContext)
     const [nowOpen, setNowOpen] = useState(1);
+    const navigate = useNavigate();
 
     const handleOpenDrawer = () => {
         setDrawerOpen(!drawerOpen);
@@ -43,6 +45,13 @@ const Loggedin = () => {
     const handleDarkTrigger = () => {
         // setdark(!dark);
     }
+    const handleLogout = () => {
+        setLoggedIn(false);
+        localStorage.removeItem('token');
+        navigate('/');
+    }
+
+    
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -73,15 +82,15 @@ const Loggedin = () => {
                 </IconButton>
                 <Menu TransitionComponent={Fade} TransitionProps={{timeout: 600}} open={menuOpen} onClose={handleOnMenuClose} anchorEl={anchor}
                  >
-                    <MenuItem sx={{backgroundColor: '#3C3D37'}} >
+                    {/* <MenuItem sx={{backgroundColor: '#3C3D37'}} >
                         <AccountCircleIcon sx={{fontSize: '1.7rem', padding: '.5rem', color: '#fff'}} />
                         <Typography sx={{fontSize: '1.1rem', padding: '0 2rem 0 1rem', color: '#fff'}}>Profile</Typography>
                     </MenuItem>
                     <MenuItem sx={{backgroundColor: '#3C3D37'}}  >
                         <SettingsIcon sx={{fontSize: '1.7rem', padding: '.5rem', color: '#fff'}} />
                         <Typography sx={{fontSize: '1.1rem', padding: '0 2rem 0 1rem', color: '#fff'}}>Settings</Typography>
-                    </MenuItem>
-                    <MenuItem sx={{backgroundColor: '#3C3D37'}}  >
+                    </MenuItem> */}
+                    <MenuItem sx={{backgroundColor: '#3C3D37'}} onClick={handleLogout} >
                         <LogoutIcon sx={{fontSize: '1.7rem', padding: '.5rem', color: '#fff'}} />
                         <Typography sx={{fontSize: '1.1rem', padding: '0 2rem 0 1rem', color: '#fff'}}>Logout</Typography>
                     </MenuItem>
@@ -127,7 +136,7 @@ const Loggedin = () => {
                             </List>
                         </ListItemButton>
                     </Tooltip>
-                    <Tooltip title={'Events'} placement='right' arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+                    {/* <Tooltip title={'Events'} placement='right' arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                         <ListItemButton className='listButton' onClick={() => {setNowOpen(4)}} sx={{maxHeight: '5rem'}}>
                             <List sx={{display: 'flex'}}>
                                 <ListItemIcon sx={{paddingLeft: '.5rem', alignItems: 'center'}}>
@@ -138,7 +147,7 @@ const Loggedin = () => {
                                 </ListItemText>
                             </List>
                         </ListItemButton>
-                    </Tooltip>
+                    </Tooltip> */}
                 </div>
                 <div>
                     <ListItemButton className='listButton' onClick={handleDarkTrigger} sx={{maxHeight: '5rem'}}>
