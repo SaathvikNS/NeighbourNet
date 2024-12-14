@@ -129,4 +129,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .pdf
-./image
+image/README
