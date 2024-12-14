@@ -10,7 +10,7 @@ const Contact = () => {
     <div>
       <section id='title'>
         <Header />
-        <img src='/assets/contactbg.jpg' style={{ position: 'absolute', width: '100vw', objectFit: 'cover', zIndex: '-10' }} alt='Contact Background'></img>
+        <img src='/assets/contactbg.jpg' style={{ position: 'absolute', width: '100vw', objectFit: 'cover', zIndex: '-10', filter: 'brightness(80%) contrast(120%)' }} alt='Contact Background'></img>
         <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', height: '100vh', width: '100vw', paddingTop: '6rem' }}>
           <Typography sx={{ fontSize: '5rem', display: 'flex', paddingTop: '8rem', color: 'white' }}>Contact Us</Typography>
           <IconButton className='action' href='#form'>
@@ -28,7 +28,7 @@ const Contact = () => {
               We’d love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out using the form below or through our contact details.
             </Typography>
             <Divider sx={{ margin: '2rem 0', backgroundColor: 'white' }} />
-            <form>
+            <form onSubmit={()=>{alert("hello")}}>
               <TextField
                 fullWidth
                 label="Your Name"
@@ -80,8 +80,8 @@ const Contact = () => {
           <Box sx={{ width: '30%', display: 'flex', flexDirection: 'column', padding: '2rem' }}>
             <Typography sx={{ fontSize: '2rem', color: 'white', paddingBottom: '1rem' }}>Contact Details</Typography>
             <Typography sx={{ color: 'white', fontSize: '1.5rem', marginBottom: '1rem' }}>Email: contact@neighbournet.com</Typography>
-            <Typography sx={{ color: 'white', fontSize: '1.5rem', marginBottom: '1rem' }}>Phone: +123 456 7890</Typography>
-            <Typography sx={{ color: 'white', fontSize: '1.5rem', marginBottom: '1rem' }}>Address: 123 Community Lane, Neighbourhood City, NC 12345</Typography>
+            <Typography sx={{ color: 'white', fontSize: '1.5rem', marginBottom: '1rem' }}>Phone: +91 1234567890</Typography>
+            <Typography sx={{ color: 'white', fontSize: '1.5rem', marginBottom: '1rem' }}>Address: 123 Community street, Neighbourhood City, NC 12345</Typography>
           </Box>
         </Box>
       </section>

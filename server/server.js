@@ -23,7 +23,7 @@ const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100
 });
-// app.use(limiter);
+app.use(limiter);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
