@@ -35,7 +35,7 @@ const Footer = () => {
             <Link href="/about" color="inherit" underline="hover" sx={{ mx: 2 }}>
               About Us
             </Link>
-            <Link href="" color="inherit" underline="hover" sx={{ mx: 2 }}>
+            <Link href="/contact" color="inherit" underline="hover" sx={{ mx: 2 }}>
               Contact
             </Link>
             <Tooltip title="No terms for now">

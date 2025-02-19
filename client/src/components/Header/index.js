@@ -80,7 +80,7 @@ const Header = (props) => {
                         <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/"} >Home</Button>
                         <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/about"} >About</Button>
                         <Button color='#fff' sx={{ fontSize: '1.1rem' }} component={Link} to={"/contact"}>Contact Us</Button>
-                        <Button color='#fff' sx={{ fontSize: '1.1rem' }} onClick={handleClickOpen} >Login/Register</Button>
+                        <Button color='#fff' sx={{ fontSize: '1.1rem' }} onClick={handleClickOpen} id='login'>Login/Register</Button>
                         <Tooltip title="This feature will be available soon" arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                             <Button color='#fff' sx={{ fontSize: '1rem' }} >
                                 <DarkModeSharpIcon fontSize='medium' className='theme' />

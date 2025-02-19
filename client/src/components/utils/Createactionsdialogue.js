@@ -14,7 +14,7 @@ const Createactionsdialogue = ({open, handleClose, tabIdentifier, userData}) => 
           (<Typography>Nothing Specified</Typography>)}
       </DialogTitle>
       <DialogContent>
-        { tabIdentifier === "help" ? (<HelpRequestsDialog userid={userData} />) :
+        { tabIdentifier === "help" ? (<HelpRequestsDialog userid={userData} open={open} />) :
           tabIdentifier === "resource" ? (<ResourceDialog userid={userData} />) :
           tabIdentifier === "event" ? (<EventDialog userid={userData} />) : 
           (<Typography>Nothing found!!</Typography>)}

@@ -9,7 +9,8 @@ import axios from 'axios';
 import { api } from '../../../../Global/localhost';
 import Createactionsdialogue from '../../../utils/Createactionsdialogue';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
+import DeleteIcon from '@mui/icons-material/Delete';
 import { MyContext } from '../../../../Global/Context';
 
 const Dashboard = () => {
@@ -22,7 +23,7 @@ const Dashboard = () => {
   const [tabIdentifier, setTabIdentifier] = useState();
   const [upcomingEvents, setUpcomingEvents] = useState();
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState("");
   const [fetchedTodo, setFetchedTodo] = useState();
   const [overview, setOverview] = useState();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -74,6 +75,7 @@ const Dashboard = () => {
       setSnackbarMessage(response.data.message)
       setSnackbarSeverity('success')
       setSnackbarOpen(true);
+      setTodo("");
       fetchData();
     } catch(error){
       setSnackbarMessage(error.response?.data?.message || "Something went wrong");
@@ -87,6 +89,22 @@ const Dashboard = () => {
       console.log(id);
       const todoCheckResponse = await axios.post(`${api}/todos/update-todo`, {id})
       console.log("PendingTodoResponse: ", todoCheckResponse.data)
+      fetchData();
+    } catch(error){
+      setSnackbarMessage(error.response?.data?.message || "Something went wrong");
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);    
+    }
+  }
+
+  const handleTodoDelete = async (id) => {
+    try{
+      console.log(id);
+      const todoDeleteResponse = await axios.post(`${api}/todos/delete-todo`, {id})
+      console.log("todoDeleteResponse: ", todoDeleteResponse.data)
+      setSnackbarMessage(todoDeleteResponse.data.message)
+      setSnackbarSeverity('success')
+      setSnackbarOpen(true);
       fetchData();
     } catch(error){
       setSnackbarMessage(error.response?.data?.message || "Something went wrong");
@@ -129,7 +147,7 @@ const Dashboard = () => {
   
   return (
     <div>
-      <Box sx={{ maxHeight: 'calc(100vh - 10rem)',padding: '2rem', backgroundColor: '#1E201E', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+      <Box sx={{padding: '2rem', backgroundColor: '#1E201E', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
 
         {/* Column 1 */}
         <Box sx={{width: 'calc(calc(100% / 3) - 1rem)', display: 'flex', flexDirection: 'column', gap: '1rem'}}>
@@ -263,9 +281,10 @@ const Dashboard = () => {
                 <Typography variant="h6">To-Do</Typography>
                 <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '1rem'}}>
                   <TextField 
-                    label="New To-do" 
+                    label="What To-do?" 
                     size="small" 
                     variant="outlined"
+                    value={todo}
                     onChange={(event)=>setTodo(event.target.value)}
                     sx={{
                       width: '90%',
@@ -290,7 +309,7 @@ const Dashboard = () => {
                       },
                     }}
                   />
-                  <IconButton onClick={handleAddTodo} sx={{width: '10%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><AddCircleIcon sx={{color: 'white'}} /></IconButton>
+                  <IconButton onClick={handleAddTodo} id='addButton' sx={{width: '10%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><AddCircleIcon sx={{color: 'white'}} /></IconButton>
                 </Box>
                 <Box sx={{paddingTop: '1rem'}}>
                   <Tabs value={tabValue} variant='fullWidth' onChange={handleTabValueChange} textColor='inherit' indicatorColor='inherit' sx={{height: '2rem', display:'flex', alignItems: 'center'}} >
@@ -303,15 +322,16 @@ const Dashboard = () => {
                         {fetchedTodo.pending.length === 0 ? (
                           <Typography width={'100%'} sx={{textAlign: 'center'}}>Nothing to display here!</Typography>
                         ) : (
-                          <List>
+                          <List className='todoHolder'>
                             {fetchedTodo.pending.map((item, index)=>(
-                              <ListItem key={index} sx={{display: 'flex', alignItems: 'flex-start'}}>
-                                <ListItemIcon>
-                                  <IconButton onClick={()=> {handleTodoCheck(item._id)}}>
-                                    <CheckBoxOutlineBlankIcon sx={{color:'white'}} />
-                                  </IconButton>
-                                </ListItemIcon>
+                              <ListItem key={index} id={index} sx={{display: 'flex', alignItems: 'flex-start'}}>
+                                <IconButton className='check' onClick={()=> {handleTodoCheck(item._id)}}>
+                                  <CheckBoxOutlineBlankIcon sx={{color:'white'}} />
+                                </IconButton>
                                 <Typography sx={{width: '90%', overflowWrap: 'break-word', paddingTop: '0.4rem'}}>{item.title}</Typography>
+                                <IconButton className='del' onClick={()=> {handleTodoDelete(item._id)}}>
+                                  <DeleteIcon sx={{color:'white'}} />
+                                </IconButton>
                               </ListItem>
                             ))}
                           </List>
@@ -322,15 +342,16 @@ const Dashboard = () => {
                         {fetchedTodo.completed.length === 0 ? (
                           <Typography width={'100%'} sx={{textAlign: 'center'}}>Nothing to display here!</Typography>
                         ) : (
-                          <List>
+                          <List className='completedTodoHolder'>
                             {fetchedTodo.completed.map((item, index)=>(
                               <ListItem key={index} sx={{display: 'flex', alignItems: 'flex-start'}}>
-                                <ListItemIcon>
-                                  <IconButton onClick={()=> {handleTodoCheck(item._id)}}>
-                                    <CheckBoxIcon sx={{color:'white'}} />
-                                  </IconButton>
-                                </ListItemIcon>
+                                <IconButton className='uncheck' onClick={()=> {handleTodoCheck(item._id)}}>
+                                  <CheckBoxIcon sx={{color:'white'}} />
+                                </IconButton>
                                 <Typography sx={{width: '90%', overflowWrap: 'break-word', paddingTop: '0.4rem'}}>{item.title}</Typography>
+                                <IconButton className='del' onClick={()=> {handleTodoDelete(item._id)}}>
+                                  <DeleteIcon sx={{color:'white'}} />
+                                </IconButton>
                               </ListItem>
                             ))}
                           </List>

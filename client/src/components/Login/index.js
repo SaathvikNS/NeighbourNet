@@ -79,7 +79,7 @@ const Login = () => {
             <Backdrop open={loading} onClick={console.log("processing")} sx={{zIndex: '10'}}>
                 <CircularProgress color='inherit' />
             </Backdrop>
-            <TextField label="Email" variant="outlined" type="email" color='#697565' value={email} onChange={(e) => setEmail(e.target.value)} fullWidth size='small' required/>
+            <TextField label="Email" variant="outlined" type="email" name='email' color='#697565' value={email} onChange={(e) => setEmail(e.target.value)} fullWidth size='small' required/>
             <FormControl variant="outlined" fullWidth size='small'>
                 <InputLabel htmlFor="password" sx={{color: 'text.secondary','&.Mui-focused': {color: '#697565'}}}>Password *</InputLabel>
                 <OutlinedInput
@@ -92,6 +92,7 @@ const Login = () => {
                         <InputAdornment position="end">
                             <IconButton
                                 aria-label="toggle password visibility"
+                                className='visibility-button'
                                 onClick={handleClickShowPassword}
                                 onMouseDown={handleMouseDownPassword}
                                 edge="end"

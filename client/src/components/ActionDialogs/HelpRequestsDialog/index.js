@@ -3,7 +3,7 @@ import { TextField, Button, Box, Snackbar, Alert, Backdrop, CircularProgress, Ty
 import axios from 'axios';
 import { api } from '../../../Global/localhost';
 
-const HelpRequestsDialog = ({userid}) => {
+const HelpRequestsDialog = ({userid, open}) => {
   console.log(userid);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
