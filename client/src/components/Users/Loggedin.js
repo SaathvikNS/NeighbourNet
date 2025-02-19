@@ -57,7 +57,7 @@ const Loggedin = () => {
     <div style={{display: 'flex', flexDirection: 'column'}}>
         <Box sx={{display: 'flex', height: '4rem', width: '100vw', backgroundColor: '#3C3D37', justifyContent: 'space-between', color: 'white', position: 'fixed', zIndex: '100'}}>
             <Box sx={{display: 'flex', alignItems: 'center', height: '100%'}}>
-                <IconButton onClick={handleOpenDrawer}>
+                <IconButton id='drawerButton' onClick={handleOpenDrawer}>
                     {!drawerOpen ? (
                         <MenuIcon sx={{color: 'white', padding: '1rem', fontSize: '1.7rem'}}/>
                     ) : (
@@ -77,7 +77,7 @@ const Loggedin = () => {
                         <ChatIcon sx={{fontSize: '1.7rem', padding: '.5rem', color: 'white'}} />
                     </IconButton>
                 </Tooltip>
-                <IconButton onClick={handleProfileMenu}>
+                <IconButton onClick={handleProfileMenu} id='profile'>
                     <AccountCircleIcon sx={{fontSize: '1.7rem', padding: '.5rem', color: 'white'}} />
                 </IconButton>
                 <Menu TransitionComponent={Fade} TransitionProps={{timeout: 600}} open={menuOpen} onClose={handleOnMenuClose} anchorEl={anchor}
@@ -90,7 +90,7 @@ const Loggedin = () => {
                         <SettingsIcon sx={{fontSize: '1.7rem', padding: '.5rem', color: '#fff'}} />
                         <Typography sx={{fontSize: '1.1rem', padding: '0 2rem 0 1rem', color: '#fff'}}>Settings</Typography>
                     </MenuItem> */}
-                    <MenuItem sx={{backgroundColor: '#3C3D37'}} onClick={handleLogout} >
+                    <MenuItem id='logOut' sx={{backgroundColor: '#3C3D37'}} onClick={handleLogout} >
                         <LogoutIcon sx={{fontSize: '1.7rem', padding: '.5rem', color: '#fff'}} />
                         <Typography sx={{fontSize: '1.1rem', padding: '0 2rem 0 1rem', color: '#fff'}}>Logout</Typography>
                     </MenuItem>
@@ -101,7 +101,7 @@ const Loggedin = () => {
             <Drawer variant='permanent' open={drawerOpen} onClose={handleDrawerClose} sx={{width: drawerOpen ? '15rem' : '4.5rem', position: 'fixed', top: '4rem', zIndex: '100', height: 'calc(100vh - 4rem)', borderTop: '2px solid #1E201E', transition: 'width 0.5s ease', flexShrink: 0, [`& .MuiDrawer-paper`]: { boxSizing: 'border-box' }}}>
                 <div className='userDrawer' style={{height: 'calc(100% - 5rem)', justifyContent: 'center'}}>
                     <Tooltip title={'Dashboard'} placement='right' arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
-                        <ListItemButton className='listButton' onClick={() => {setNowOpen(1)}} sx={{maxHeight: '5rem'}}>
+                        <ListItemButton className='listButton dashBoard' onClick={() => {setNowOpen(1)}} sx={{maxHeight: '5rem'}}>
                             <List sx={{display: 'flex'}}>
                                 <ListItemIcon sx={{paddingLeft: '.5rem', alignItems: 'center'}}>
                                     <DashboardIcon sx={{fontSize: '1.7rem', color: '#fff'}} />
@@ -113,7 +113,7 @@ const Loggedin = () => {
                         </ListItemButton>
                     </Tooltip>
                     <Tooltip title={'Help Request'} placement='right' arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
-                        <ListItemButton className='listButton' onClick={() => {setNowOpen(2)}} sx={{maxHeight: '5rem'}}>
+                        <ListItemButton className='listButton helpRequest' onClick={() => {setNowOpen(2)}} sx={{maxHeight: '5rem'}}>
                             <List sx={{display: 'flex'}}>
                                 <ListItemIcon sx={{paddingLeft: '.5rem', alignItems: 'center'}}>
                                     <HearingIcon sx={{fontSize: '1.7rem', color: '#fff'}} />
@@ -125,7 +125,7 @@ const Loggedin = () => {
                         </ListItemButton>
                     </Tooltip>
                     <Tooltip title={'Resource Sharing'} placement='right' arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
-                        <ListItemButton className='listButton' onClick={() => {setNowOpen(3)}} sx={{maxHeight: '5rem'}}>
+                        <ListItemButton className='listButton resourceRequest' onClick={() => {setNowOpen(3)}} sx={{maxHeight: '5rem'}}>
                             <List sx={{display: 'flex'}}>
                                 <ListItemIcon sx={{paddingLeft: '.5rem', alignItems: 'center'}}>
                                     <VolunteerActivismIcon sx={{fontSize: '1.7rem', color: '#fff'}} />
@@ -150,7 +150,7 @@ const Loggedin = () => {
                     </Tooltip> */}
                 </div>
                 <div>
-                    <ListItemButton className='listButton' onClick={handleDarkTrigger} sx={{maxHeight: '5rem'}}>
+                    <ListItemButton className='listButton darkHumour' onClick={handleDarkTrigger} sx={{maxHeight: '5rem'}}>
                         <Tooltip title={'Will be updated soon'} placement='top' arrow disableInteractive TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                             <List sx={{display: 'flex'}}>
                                 <ListItemIcon sx={{paddingLeft: '.5rem', alignItems: 'center'}}>

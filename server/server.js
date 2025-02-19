@@ -16,14 +16,16 @@ if (!process.env.MONGO_URI) {
 
 app.use(cors());
 app.use(express.json());
-app.use(helmet());
+app.use(helmet({contentSecurityPolicy: false,}));
 app.use(xss());
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 100
+    max: 100,
+    message: 'Too many requests from this IP, please try again later.'
 });
 app.use(limiter);
+
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
@@ -43,6 +45,7 @@ app.use('/api/overview', require('./routes/overview'))
 app.use((err, req, res, next) => {
     console.error(err.message);
     res.status(500).json({ message: 'Something went wrong!!' });
+    next(err);
 });
 
 const shutdown = () => {
@@ -55,6 +58,14 @@ const shutdown = () => {
 
 process.on('SIGINT', shutdown);
 process.on('SIGTERM', shutdown);
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Promise Rejection:', reason);
+});
+mongoose.connection.on('disconnected', () => {
+    console.error('MongoDB disconnected! Trying to reconnect...');
+    mongoose.connect(process.env.MONGO_URI).catch(err => console.error('Reconnection failed:', err));
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);

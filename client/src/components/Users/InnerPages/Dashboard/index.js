@@ -204,7 +204,7 @@ const Dashboard = () => {
             {loaded ? (
               <Card sx={{ padding: '1rem', background: '#3C3D37', color: 'white' }}>
                 <Typography variant="h6">Recent Activity</Typography>
-                <List>
+                <List className='recentActivities'>
                   {recentActivity.map((activity, index)=>(
                     <ListItem key={index}>{ activity.activity === "ScheduledEvent" ? "Scheduled Event" :
                     activity.activity === "HelpRequest" ? "Posted Help Request" :
