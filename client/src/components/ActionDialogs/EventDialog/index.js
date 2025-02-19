@@ -3,7 +3,7 @@ import { TextField, Button, Box, Snackbar, Alert, Backdrop, CircularProgress, Ty
 import axios from 'axios';
 import { api } from '../../../Global/localhost';
 
-const EventDialog = ({userid}) => {
+const EventDialog = ({userid, handleClose}) => {
   console.log(userid);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -41,6 +41,10 @@ const EventDialog = ({userid}) => {
             setSnackbarMessage('Help Request Posted Successfully');
             setSnackbarSeverity('success');
             setSnackbarOpen(true);
+
+            setTimeout(() => {
+                handleClose()
+            }, 1000);
         } catch(error){
             setSnackbarMessage(error.response?.data?.message || "Something went wrong");
             setSnackbarSeverity('error');

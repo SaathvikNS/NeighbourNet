@@ -4,7 +4,7 @@ import axios from 'axios';
 import { api } from '../../../Global/localhost';
 import { category } from './../../../Global/ResourceCategories';
 
-const ResourceDialog = ({userid}) => {
+const ResourceDialog = ({userid, handleClose}) => {
   console.log(userid);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -42,6 +42,10 @@ const ResourceDialog = ({userid}) => {
             setSnackbarMessage('Resource Requested Successfully');
             setSnackbarSeverity('success');
             setSnackbarOpen(true);
+
+            setTimeout(() => {
+                handleClose()
+            }, 1000);
         } catch(error){
             setSnackbarMessage(error.response?.data?.message || "Something went wrong");
             setSnackbarSeverity('error');
@@ -86,7 +90,7 @@ const ResourceDialog = ({userid}) => {
                 <Autocomplete
                   disablePortal
                   options={category}
-                  renderInput={(params) => <TextField {...params} label="Category" margin='normal' size='small' required/>}
+                  renderInput={(params) => <TextField {...params} className='category' label="Category" margin='normal' size='small' required/>}
                   filterOptions={filteroptions}
                   fullWidth
                   onChange={(event, value) => setFormData({...formData, category: value})}

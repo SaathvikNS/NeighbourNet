@@ -48,52 +48,77 @@ sleep(1)
 driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div/div/div[1]/div/form/button').click()
 sleep(1)
 
-random_number = random.randint(1, 5)
-for i in range(random_number):
-    driver.find_element(By.TAG_NAME, 'input').send_keys('To Do test ', i+1)
-    sleep(1)
+# random_number = random.randint(1, 5)
+# for i in range(random_number):
+#     driver.find_element(By.TAG_NAME, 'input').send_keys('To Do test ', i+1)
+#     sleep(1)
 
-    driver.find_element(By.CSS_SELECTOR, 'button#addButton').click()
-    sleep(1)
+#     driver.find_element(By.CSS_SELECTOR, 'button#addButton').click()
+#     sleep(1)
 
-checkboxes = driver.find_elements(By.CSS_SELECTOR, 'ul.todoHolder li button.check')
-for i in range(len(checkboxes)//2):
-    print("checking")
-    driver.find_element(By.CSS_SELECTOR, 'ul.todoHolder li button.check').click()
-    sleep(1)
+# checkboxes = driver.find_elements(By.CSS_SELECTOR, 'ul.todoHolder li button.check')
+# for i in range(len(checkboxes)//2):
+#     print("checking")
+#     driver.find_element(By.CSS_SELECTOR, 'ul.todoHolder li button.check').click()
+#     sleep(1)
 
-driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
-sleep(2)
+# driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
+# sleep(2)
 
-driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
-sleep(2)
+# driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
+# sleep(2)
 
-deleteButtons = driver.find_elements(By.CSS_SELECTOR, 'ul.todoHolder li button.del')
-for i in range(len(deleteButtons)):
-    print("deleting")
-    driver.find_element(By.CSS_SELECTOR, 'ul.todoHolder li button.del').click()
-    sleep(1)
+# deleteButtons = driver.find_elements(By.CSS_SELECTOR, 'ul.todoHolder li button.del')
+# for i in range(len(deleteButtons)):
+#     print("deleting")
+#     driver.find_element(By.CSS_SELECTOR, 'ul.todoHolder li button.del').click()
+#     sleep(1)
 
-driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
-sleep(2)
+# driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
+# sleep(2)
 
-unCheckboxes = driver.find_elements(By.CSS_SELECTOR, 'ul.completedTodoHolder li button.check')
-for i in range(len(unCheckboxes)//2):
-    print("unchecking")
-    driver.find_element(By.CSS_SELECTOR, 'ul.completedTodoHolder li button.uncheck').click()
-    sleep(1)
+# unCheckboxes = driver.find_elements(By.CSS_SELECTOR, 'ul.completedTodoHolder li button.check')
+# for i in range(len(unCheckboxes)//2):
+#     print("unchecking")
+#     driver.find_element(By.CSS_SELECTOR, 'ul.completedTodoHolder li button.uncheck').click()
+#     sleep(1)
 
-driver.find_element(By.CSS_SELECTOR, 'ul.completedTodoHolder li button.del').click()
+# driver.find_element(By.CSS_SELECTOR, 'ul.completedTodoHolder li button.del').click()
 
-driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
-sleep(2)
+# driver.find_element(By.CSS_SELECTOR, 'button[tabindex="-1"]').click()
+# sleep(2)
 
-deleteButtons = driver.find_elements(By.CSS_SELECTOR, 'ul.todoHolder li button.del')
-for i in range(int(len(deleteButtons)/2)):
-    print("deleting")
-    driver.find_element(By.CSS_SELECTOR, 'ul.todoHolder li button.del').click()
-    sleep(1)
+# deleteButtons = driver.find_elements(By.CSS_SELECTOR, 'ul.todoHolder li button.del')
+# for i in range(int(len(deleteButtons)/2)):
+#     print("deleting")
+#     driver.find_element(By.CSS_SELECTOR, 'ul.todoHolder li button.del').click()
+#     sleep(1)
 
+driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div[2]/div[2]/div/div/div[3]/div[2]/div/button[1]').click()
+sleep(1)
 
+driver.find_element(By.NAME, 'title').send_keys("Test Help Request")
+sleep(1)
+
+driver.find_element(By.CSS_SELECTOR, 'textarea[name="description"]').send_keys("This the help request created for testing...")
+sleep(1)
+
+driver.find_element(By.CSS_SELECTOR, 'form > button').click()
+sleep(3)
+
+# driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div[2]/div[2]/div/div/div[3]/div[2]/div/button[2]').click()
+# sleep(1)
+
+# driver.find_element(By.NAME, 'title').send_keys("Test Resource Request")
+# sleep(1)
+
+# driver.find_element(By.CSS_SELECTOR, 'textarea[name="description"]').send_keys("This the Resource request created for testing...")
+# sleep(1)
+
+# driver.find_element(By.CSS_SELECTOR, '.category > div > input').send_keys("Computers and IT Equipment")
+# sleep(1)
+
+# driver.find_element(By.CSS_SELECTOR, 'form > button').click()
+# sleep(3)
 
 sleep(10)
