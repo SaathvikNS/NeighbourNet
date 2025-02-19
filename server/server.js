@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 
 const app = express();
-const PORT = parseInt(process.env.PORT) || 8000;
+const PORT = parseInt(process.env.PORT) || 5000;
 
 if (!process.env.MONGO_URI) {
     console.log("Missing environment variable: MONGO_URI");

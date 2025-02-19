@@ -94,17 +94,17 @@ sleep(1)
 #     driver.find_element(By.CSS_SELECTOR, 'ul.todoHolder li button.del').click()
 #     sleep(1)
 
-driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div[2]/div[2]/div/div/div[3]/div[2]/div/button[1]').click()
-sleep(1)
+# driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div[2]/div[2]/div/div/div[3]/div[2]/div/button[1]').click()
+# sleep(1)
 
-driver.find_element(By.NAME, 'title').send_keys("Test Help Request")
-sleep(1)
+# driver.find_element(By.NAME, 'title').send_keys("Test Help Request")
+# sleep(1)
 
-driver.find_element(By.CSS_SELECTOR, 'textarea[name="description"]').send_keys("This the help request created for testing...")
-sleep(1)
+# driver.find_element(By.CSS_SELECTOR, 'textarea[name="description"]').send_keys("This the help request created for testing...")
+# sleep(1)
 
-driver.find_element(By.CSS_SELECTOR, 'form > button').click()
-sleep(3)
+# driver.find_element(By.CSS_SELECTOR, 'form > button').click()
+# sleep(3)
 
 # driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div[2]/div[2]/div/div/div[3]/div[2]/div/button[2]').click()
 # sleep(1)
@@ -118,7 +118,8 @@ sleep(3)
 # driver.find_element(By.CSS_SELECTOR, '.category > div > input').send_keys("Computers and IT Equipment")
 # sleep(1)
 
+# print(driver.find_element(By.CSS_SELECTOR, '.MuiPopper-root').get_attribute('innerHTML'))
+# driver.find_element(By.CSS_SELECTOR, '.MuiPopper-root > div > ul > li').click()
+
 # driver.find_element(By.CSS_SELECTOR, 'form > button').click()
 # sleep(3)
-
-sleep(10)
