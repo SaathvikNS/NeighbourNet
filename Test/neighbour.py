@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import random
 
-
 options = webdriver.ChromeOptions()
 options.add_argument("--force-device-scale-factor=1")
 
